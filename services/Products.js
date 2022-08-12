@@ -9,6 +9,10 @@ const productsService = {
 
     return result;
   },
+  create: async (name) => {
+    const result = await productsModal.create(name);
+    return result;
+  },
 };
 
 module.exports = productsService;

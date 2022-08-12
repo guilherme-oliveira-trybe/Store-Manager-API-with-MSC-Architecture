@@ -10,6 +10,11 @@ const productsController = {
     const result = await productsService.getById(id);
     return res.status(200).json(result);
   },
+  create: async (req, res) => {
+    const { name } = req.body;
+    const result = await productsService.create(name);
+    return res.status(201).json(result);
+  },
 };
 
 module.exports = productsController;
