@@ -18,14 +18,6 @@ const validators = {
         break;
     }
 
-    // if (details[0].type === 'any.required') {
-    //   throw new CustomError(400, details[0].message);
-    // }
-
-    // if (details[0].type === 'string.min') {
-    //   throw new CustomError(422, details[0].message);
-    // }
-
     next();
   },
 };
