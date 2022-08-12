@@ -7,15 +7,24 @@ const validators = {
       name: Joi.string().min(5).required(),
     });
 
-    const { error: { details } } = schema.validate(req.body);
+    const { error } = schema.validate(req.body);
 
-    switch (details[0].type) {
-      case 'any.required':
-        throw new CustomError(400, details[0].message);
-      case 'string.min':
-        throw new CustomError(422, details[0].message);
-      default:
-        break;
+    // switch (details[0].type) {
+    //   case 'any.required':
+    //     throw new CustomError(400, details[0].message);
+    //   case 'string.min':
+    //     throw new CustomError(422, details[0].message);
+    //   default:
+    //     break;
+    // }
+
+    if (error) {
+      if (error.details[0].type === 'any.required') {
+        throw new CustomError(400, error.details[0].message);
+      }
+      if (error.details[0].type === 'string.min') {
+        throw new CustomError(422, error.details[0].message);
+      }
     }
 
     next();
