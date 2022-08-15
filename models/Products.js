@@ -30,6 +30,14 @@ const products = {
 
     return { id, name };
   },
+  delete: (id) => {
+    const query = `
+    DELETE FROM StoreManager.products
+    WHERE id = ?;
+    `;
+
+    return connection.execute(query, [id]);
+  },
 };
 
 module.exports = products;

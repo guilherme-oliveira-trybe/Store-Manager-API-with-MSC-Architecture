@@ -19,7 +19,13 @@ const productsController = {
     const { id } = req.params;
     const { name } = req.body;
     const result = await productsService.update(id, name);
-    res.status(200).json(result);
+    return res.status(200).json(result);
+  },
+  delete: async (req, res) => {
+    const { id } = req.params;
+    await productsService.delete(id);
+
+    return res.status(204).end();
   },
 };
 
