@@ -13,6 +13,12 @@ const productsService = {
     const result = await productsModel.create(name);
     return result;
   },
+  update: async (id, name) => {
+    const result = await productsModel.getById(id);
+    if (!result) throw new CustomError(404, 'Product not found');
+
+    return productsModel.update(id, name);
+  },
 };
 
 module.exports = productsService;
