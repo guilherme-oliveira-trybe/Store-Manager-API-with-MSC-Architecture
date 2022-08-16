@@ -20,7 +20,6 @@ const products = {
     return { id: insertId, name };
   },
   update: async (id, name) => {
-    console.log(name);
     const query = `
     UPDATE StoreManager.products
     SET name = ?
@@ -30,13 +29,15 @@ const products = {
 
     return { id, name };
   },
-  delete: (id) => {
+  delete: async (id) => {
     const query = `
     DELETE FROM StoreManager.products
     WHERE id = ?;
     `;
 
-    return connection.execute(query, [id]);
+    const [{ affectedRows }] = await connection.execute(query, [id]);
+    
+    return ({ affectedRows }); 
   },
 };
 

@@ -10,8 +10,10 @@ const salesProductsServices = {
       if (!isIdExists) throw new CustomError(404, 'Product not found');
     }
 
-    const teste = await Promise.all(body.map(({ productId }) => productsModel.getById(productId)));
-    if (teste.includes(undefined)) throw new CustomError(404, 'Product not found');
+    const products = await Promise
+      .all(body.map(({ productId }) => productsModel.getById(productId)));
+    
+    if (products.includes(undefined)) throw new CustomError(404, 'Product not found');
 
     const result = await salesProductsModel.create(body);
     return result;
