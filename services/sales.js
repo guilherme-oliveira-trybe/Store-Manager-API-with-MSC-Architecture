@@ -9,6 +9,14 @@ const salesServices = {
 
     return result;
   },
+
+  delete: async (id) => {
+    const result = await salesModel.getById(id);
+    console.log(result);
+    if (!result.length) throw new CustomError(404, 'Sale not found');
+
+    return salesModel.delete(id);
+  },
 };
 
 module.exports = salesServices;

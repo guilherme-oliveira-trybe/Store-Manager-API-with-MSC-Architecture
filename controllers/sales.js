@@ -11,6 +11,13 @@ const salesControllers = {
     const result = await salesServices.getById(id);
     return res.status(200).json(result);
   },
+
+  delete: async (req, res) => {
+    const { id } = req.params;
+    await salesServices.delete(id);
+
+    return res.status(204).end();
+  },
 };
 
 module.exports = salesControllers;
