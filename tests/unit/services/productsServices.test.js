@@ -3,8 +3,8 @@ const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 const { expect } = require('chai')
 const CustomError = require('../../../errors/customError');
-const productsModel = require('../../../models/Products');
-const productsServices = require('../../../services/Products');
+const productsModel = require('../../../models/products');
+const productsServices = require('../../../services/products');
 chai.use(chaiAsPromised);
 
 describe('Teste Products Services', () => {

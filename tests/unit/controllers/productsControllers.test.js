@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const sinon = require('sinon');
-const productsServices = require('../../../services/Products');
-const productsControllers = require('../../../controllers/Products');
+const productsServices = require('../../../services/products');
+const productsControllers = require('../../../controllers/products');
 const testMyController = require('../../utils/');
 
 describe('Teste Products Controllers', () => {

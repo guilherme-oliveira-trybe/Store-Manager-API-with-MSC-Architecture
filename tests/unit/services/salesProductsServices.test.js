@@ -5,7 +5,7 @@ const { expect } = require('chai')
 const CustomError = require('../../../errors/customError');
 const salesProductsModel = require('../../../models/salesProducts');
 const salesProductsServices = require('../../../services/salesProducts');
-const productsModel = require('../../../models/Products');
+const productsModel = require('../../../models/products');
 chai.use(chaiAsPromised);
 
 describe('Teste SalesProducts Services', () => {

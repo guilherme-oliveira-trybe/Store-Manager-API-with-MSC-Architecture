@@ -1,5 +1,5 @@
 const salesProductsModel = require('../models/salesProducts');
-const productsModel = require('../models/Products');
+const productsModel = require('../models/products');
 const CustomError = require('../errors/customError');
 
 const salesProductsServices = {
