@@ -9,7 +9,8 @@ const BASIC_REQ = {
 const testMyController = async (controller, request = BASIC_REQ) => {
   const resultado = {
     body: undefined,
-    status: undefined
+    status: undefined,
+    end: false
   }
   const response = {
     json: (obj) => {
@@ -19,6 +20,10 @@ const testMyController = async (controller, request = BASIC_REQ) => {
     status: (num) => {
       resultado.status = num;
       return response
+    },
+    end: () => {
+      resultado.end = true;
+      return null
     }
   }
   const spyJson = sinon.spy(response, 'json');
