@@ -7,6 +7,11 @@ const products = {
     );
     return result;
   },
+  getBySearchTerm: async (searchTerm) => {
+    const allproducts = await products.getAll();
+    const result = await allproducts.filter((p) => p.name.includes(searchTerm));
+    return result;
+  },
   getById: async (id) => {
     const [[result]] = await connection.execute(
       'SELECT id, name FROM StoreManager.products WHERE id = ?', [id],

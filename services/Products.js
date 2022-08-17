@@ -3,6 +3,11 @@ const CustomError = require('../errors/customError');
 
 const productsService = {
   getAll: async () => productsModel.getAll(),
+  getBySearchTerm: async (searchTerm) => {
+    const result = await productsModel.getBySearchTerm(searchTerm);
+
+    return result;
+  },
   getById: async (id) => {
     const result = await productsModel.getById(id);
     if (!result) throw new CustomError(404, 'Product not found');
