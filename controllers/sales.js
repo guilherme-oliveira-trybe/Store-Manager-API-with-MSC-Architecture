@@ -12,6 +12,13 @@ const salesControllers = {
     return res.status(200).json(result);
   },
 
+  update: async (req, res) => {
+    const { id } = req.params;
+    const result = await salesServices.update(id, req.body);
+
+    return res.status(200).json(result);
+  },
+
   delete: async (req, res) => {
     const { id } = req.params;
     await salesServices.delete(id);

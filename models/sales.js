@@ -31,6 +31,19 @@ const sales = {
     return insertId;
   },
 
+  update: async (saleId, body) => {
+    const query = `
+    UPDATE StoreManager.sales_products
+    SET product_id = ?, quantity = ?
+    WHERE sale_id = ? AND product_id = ?
+    `;
+    await Promise
+      .all(body.map(({ productId, quantity }) => connection
+        .execute(query, [productId, quantity, saleId, productId]))); 
+    
+    return { saleId, itemsUpdated: body };
+  },
+
   delete: async (id) => {
   const query = `
     DELETE FROM StoreManager.sales
